@@ -1,34 +1,35 @@
-# portfolio-glossary
+# PORTFOLIO - GLOSSARY
 
-## Project setup
-```
-yarn install
-```
+_(JORGE VIEIRA MACHADO)_
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## WHY `portfolio-glossary` ?
+This Project was created in order to improve my knowledge in front-end and software development
 
-### Run your unit tests
-```
-yarn test:unit
-```
+------
+## Build Setup
+#### Requirements
 
-### Run your end-to-end tests
-```
-yarn test:e2e
-```
+* Install `node 18.15.x` [download](https://nodejs.org/en/download/releases/)
 
-### Lints and fixes files
-```
-yarn lint
-```
+#### 1. Build / Watch in development
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+To render your templates in **DEV**, please serve your templates in the _port_ `8080` with the command below:
+
+``` bash
+yarn install # 👈🏼 it installs
+yarn serve # 👈🏼 it running our server
+```
+------
+#### 2. Frameworks used
+### 2.1 Tailwind
+reference [tailwindcss](https://v2.tailwindcss.com/docs/guides/vue-3-vite)
+``` bash
+yarn add --dev tailwindcss@latest postcss@latest autoprefixer@latest
+npx tailwindcss init -p
+```
+### 2.2 axios 
+reference [axios](https://www.npmjs.com/package/axios)
+``` bash
+yarn add axios
+```

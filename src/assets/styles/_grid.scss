@@ -1,0 +1,9 @@
+@mixin grid-base($token-spacing-x: $token-spacing-8, $token-spacing-y: null) {
+  @if ($token-spacing-y == null) {
+    $token-spacing-y: $token-spacing-x;
+  }
+
+  display: grid;
+  grid-column-gap: $token-spacing-x;
+  grid-row-gap: $token-spacing-y;
+}

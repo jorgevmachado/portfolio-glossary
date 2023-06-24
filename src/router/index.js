@@ -1,20 +1,66 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+const LayoutGlossary = () => import(/* webpackChunkName: "home" */ '../components/shared/LayoutGlossary.vue');
+const HomeView = () => import(/* webpackChunkName: "home" */ '../views/HomeView.vue');
+const PokemonView = () => import(/* webpackChunkName: "pokemon" */ '../views/PokemonView.vue');
+const StarWarsView = () => import(/* webpackChunkName: "starWars" */ '../views/StarWarsView.vue');
+const FakeStoreView = () => import(/* webpackChunkName: "fakeStore" */ '../views/FakeStoreView.vue');
+const FakeStoreCartView = () => import(/* webpackChunkName: "fakeStore" */ '../views/FakeStoreCartView.vue');
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    component: LayoutGlossary,
+    children: [
+      {
+        path: '',
+        name: 'App.Home',
+        component: HomeView,
+        meta: { pageCategory: 'Home'}
+      },
+    ]
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/pokemon',
+    component: LayoutGlossary,
+    children: [
+      {
+        path: '',
+        name: 'App.Pokemon',
+        component: PokemonView,
+        meta: { pageCategory: 'Pokemon'}
+      },
+    ]
+  },
+  {
+    path: '/star-wars',
+    component: LayoutGlossary,
+    children: [
+      {
+        path: '',
+        name: 'App.StarWars',
+        component: StarWarsView,
+        meta: { pageCategory: 'StarWars'}
+      },
+    ]
+  },
+  {
+    path: '/fake-store',
+    component: LayoutGlossary,
+    children: [
+      {
+        path: '',
+        name: 'App.FakeStore',
+        component: FakeStoreView,
+        meta: { pageCategory: 'FakeStore'}
+      },
+      {
+        path: 'cart',
+        name: 'App.FakeStore.Cart',
+        component: FakeStoreCartView,
+        meta: { pageCategory: 'FakeStore'}
+      }
+    ]
+  },
 ]
 
 const router = createRouter({

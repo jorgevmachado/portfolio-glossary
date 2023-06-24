@@ -1,0 +1,62 @@
+$token-border-radius-large: 8px;
+$token-border-radius-huge: 16px;
+
+$screen-xs: 0px;
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+
+$breakpoints: (
+        xs: $screen-xs,
+        sm: $screen-sm,
+        md: $screen-md,
+        lg: $screen-lg,
+        xl: $screen-xl,
+);
+
+$grid-columns: 12;
+
+$grid-breakpoints: (
+        xs: (
+                size: 128px,
+                gap: 16px,
+                columns: 2,
+        ),
+        sm: (
+                size: 192px,
+                gap: 16px,
+                columns: 2,
+        ),
+        md: (
+                size: 256px,
+                gap: 16px,
+                columns: 2,
+        ),
+        lg: (
+                size: 88px,
+                gap: 32px,
+                columns: 8,
+        ),
+        xl: (
+                size: 100px,
+                gap: 32px,
+                columns: 8,
+        ),
+);
+
+$layers: (
+        step-icon: 10,
+        navbar: 20,
+        notification: 30,
+        progress: 100,
+        modal: 99999999,
+  // zendesk chat button has a really high z-index,
+);
+
+$micro-transition: 100ms;
+$macro-transition: 250ms;
+$style-transition: ease-in-out;
+
+$shadow-s: 0 0 0 1px rgba(92, 106, 196, 0.1);
+$header-height: 72px;
