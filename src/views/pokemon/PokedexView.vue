@@ -12,7 +12,7 @@
         />
       </div>
     </div>
-    <h2 v-else>
+    <h2 v-else class="justify-center text-center mt-5 text-xl">
       Empty
     </h2>
   </section>
