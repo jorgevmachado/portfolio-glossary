@@ -3,6 +3,7 @@ const LayoutGlossary = () => import(/* webpackChunkName: "home" */ '../component
 const HomeView = () => import(/* webpackChunkName: "home" */ '../views/HomeView.vue');
 const PokemonView = () => import(/* webpackChunkName: "pokemon" */ '../views/pokemon/PokemonView.vue');
 const PokemonDetailsView = () => import(/* webpackChunkName: "pokemon" */ '../views/pokemon/PokemonDetailsView.vue');
+const PokedexView = () => import(/* webpackChunkName: "pokemon" */ '../views/pokemon/PokedexView.vue');
 const StarWarsView = () => import(/* webpackChunkName: "starWars" */ '../views/star-wars/StarWarsView.vue');
 const FakeStoreView = () => import(/* webpackChunkName: "fakeStore" */ '../views/fake-store/FakeStoreView.vue');
 const FakeStoreCartView = () => import(/* webpackChunkName: "fakeStore" */ '../views/fake-store/FakeStoreCartView.vue');
@@ -34,6 +35,12 @@ const routes = [
         path: ':name',
         name: 'App.Pokemon.Detail',
         component: PokemonDetailsView,
+        meta: { pageCategory: 'Pokemon'}
+      },
+      {
+        path: 'my-pokedex',
+        name: 'App.Pokemon.pokedex',
+        component: PokedexView,
         meta: { pageCategory: 'Pokemon'}
       },
     ]

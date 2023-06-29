@@ -13,6 +13,15 @@
         </ul>
         <!-- Header Icons -->
         <div class="hidden xl:flex items-center space-x-5 items-center">
+          <router-link class="flex items-center hover:text-gray-200" to="/pokemon/my-pokedex">
+            <font-awesome-icon icon="robot" class="" />
+            <span class="flex absolute -mt-5 ml-4">
+              <span class="animate-ping absolute inline-flex h-4 w-4 rounded-full bg-pink-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-4 w-4 bg-pink-500">
+                  <span :style="{marginLeft: marginLeft(pokedex) + 'px'}" style="font-size: 12px">{{pokedex.length}}</span>
+                </span>
+              </span>
+          </router-link>
           <a class="hover:text-gray-200" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -25,7 +34,7 @@
             <span class="flex absolute -mt-5 ml-4">
               <span class="animate-ping absolute inline-flex h-4 w-4 rounded-full bg-pink-400 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-4 w-4 bg-pink-500">
-                  <span :style="{marginLeft: marginLeft() + 'px'}" style="font-size: 12px">{{productsInBag.length}}</span>
+                  <span :style="{marginLeft: marginLeft(productsInBag) + 'px'}" style="font-size: 12px">{{productsInBag.length}}</span>
                 </span>
               </span>
           </router-link>
@@ -66,11 +75,12 @@ import {mapState} from 'vuex';
 export default {
   name: 'HeaderGlossary',
   computed: {
-    ...mapState('fakeStore', ['productsInBag'])
+    ...mapState('fakeStore', ['productsInBag']),
+    ...mapState('pokemon', ['pokedex'])
   },
   methods: {
-    marginLeft() {
-      if (this.productsInBag.length >= 10) {
+    marginLeft(item = []) {
+      if (item.length >= 10) {
         return 0;
       }
       return 5;

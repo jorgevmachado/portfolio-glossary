@@ -4,14 +4,14 @@ export default {
     storage: typeof window === 'undefined' ? false : window.localStorage,
     get(key, fallback = '{}', parse = true) {
       if (!this.storage) return '';
-      const data = this.storage.getItem(key) || fallback;
+      const data = localStorage.getItem(key) || fallback;
       if (parse) return JSON.parse(data);
       return data;
     },
     set(key, rawData, stringify = true) {
       if (!this.storage) return;
       const data = stringify ? JSON.stringify(rawData) : rawData;
-      this.storage.setItem(key, data);
+        localStorage.setItem(key, data);
     },
     setPokemons(pokemons = []) {
         return this.set(LOCAL_STORAGE.POKEMONS, pokemons);

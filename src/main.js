@@ -19,6 +19,8 @@ import {
     faPhone,
     faPerson,
     faClose,
+    faRobot,
+    faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 library.add(
     faCoffee,
@@ -34,6 +36,8 @@ library.add(
     faPhone,
     faPerson,
     faClose,
+    faRobot,
+    faTrash
 );
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(store).use(router).mount('#app')

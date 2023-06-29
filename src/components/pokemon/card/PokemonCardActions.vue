@@ -3,7 +3,7 @@
     <div v-if="haveOnPokedex(name)">
         <pokemon-card-action-button
             v-if="allowRemoveFromPokedex"
-            @click.stop="removeFromPokedex(name)"
+            @click="removeFromPokedex(name)"
             tooltip="Remove Pokemon from My Pokedex"
             icon="trash"
         />
@@ -16,7 +16,7 @@
     </div>
     <pokemon-card-action-button
         v-else
-        @click.stop="addToPokedex(name)"
+        @click="addToPokedex(name)"
         tooltip="Add Pokemon to My Pokedex"
         icon="plus"
     />
@@ -45,7 +45,10 @@ export default {
     ...mapGetters('pokemon', ['haveOnPokedex'])
   },
   methods: {
-    ...mapActions('pokemon', ['addToPokedex','removeFromPokedex']),
+    ...mapActions({
+      addToPokedex: 'pokemon/addToPokedex',
+      removeFromPokedex: 'pokemon/removeFromPokedex',
+    }),
   }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div class="card relative m-5">
     <div class="body">
-      <pokemon-card-actions :name="title" :allow-remove-from-pokedex="allowRemoveFromPokedex"/>
-      <span class="font-bold text-lg">{{title}}</span>
+      <pokemon-card-actions :name="name" :allow-remove-from-pokedex="allowRemoveFromPokedex"/>
+      <span class="font-bold text-lg">{{name}}</span>
       <div class="relative h-100">
         <div class="pointer">
           <img class="image" :src="image" alt="">
@@ -19,7 +19,7 @@ export default {
   name: 'PokemonCard',
   components: {PokemonCardActions},
   props: {
-    title: {
+    name: {
       type: String,
       required: true,
     },

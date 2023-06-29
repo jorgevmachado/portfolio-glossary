@@ -5,7 +5,7 @@
         <pokemon-card
             v-for="(item, index) in pokemons"
             :key="index"
-            :title="item.name"
+            :name="item.name"
             :image="item.image"
             @click.stop="expand(item.name)"/>
       </div>

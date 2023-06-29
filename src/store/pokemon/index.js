@@ -34,8 +34,8 @@ export default {
             state.pokemons = pokemons;
             localStorage.setPokemons(state.pokemons);
         },
-        addToPokedex(state, name) {
-            state.pokedex.push(name);
+        addToPokedex(state, pokemon) {
+            state.pokedex.push(pokemon);
             localStorage.setPokeDex(state.pokedex)
         },
         removeFromPokedex(state, name) {
@@ -102,8 +102,8 @@ export default {
         addToPokedex({ commit, state}, name) {
             commit('addToPokedex', state.pokemons.find((item) => item.name === name));
         },
-        removeFromPokedex({ commit, state}, name){
-            commit('removeFromPokedex', state.pokedex.find((item) => item.name === name));
+        removeFromPokedex({ commit}, name){
+            commit('removeFromPokedex', name);
         },
     },
 
