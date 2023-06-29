@@ -50,4 +50,8 @@ export default {
   post: async (...args) => handleRetry(axiosInstance.post, args),
   delete: async (...args) => handleRetry(axiosInstance.delete, args),
   put: async (...args) => handleRetry(axiosInstance.put, args),
+  response: (response) => {
+      const { data = {} } = response;
+      return data;
+  }
 };

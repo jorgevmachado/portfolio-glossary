@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 const LayoutGlossary = () => import(/* webpackChunkName: "home" */ '../components/shared/LayoutGlossary.vue');
 const HomeView = () => import(/* webpackChunkName: "home" */ '../views/HomeView.vue');
-const PokemonView = () => import(/* webpackChunkName: "pokemon" */ '../views/PokemonView.vue');
-const StarWarsView = () => import(/* webpackChunkName: "starWars" */ '../views/StarWarsView.vue');
-const FakeStoreView = () => import(/* webpackChunkName: "fakeStore" */ '../views/FakeStoreView.vue');
-const FakeStoreCartView = () => import(/* webpackChunkName: "fakeStore" */ '../views/FakeStoreCartView.vue');
+const PokemonView = () => import(/* webpackChunkName: "pokemon" */ '../views/pokemon/PokemonView.vue');
+const PokemonDetailsView = () => import(/* webpackChunkName: "pokemon" */ '../views/pokemon/PokemonDetailsView.vue');
+const StarWarsView = () => import(/* webpackChunkName: "starWars" */ '../views/star-wars/StarWarsView.vue');
+const FakeStoreView = () => import(/* webpackChunkName: "fakeStore" */ '../views/fake-store/FakeStoreView.vue');
+const FakeStoreCartView = () => import(/* webpackChunkName: "fakeStore" */ '../views/fake-store/FakeStoreCartView.vue');
 
 const routes = [
   {
@@ -27,6 +28,12 @@ const routes = [
         path: '',
         name: 'App.Pokemon',
         component: PokemonView,
+        meta: { pageCategory: 'Pokemon'}
+      },
+      {
+        path: ':name',
+        name: 'App.Pokemon.Detail',
+        component: PokemonDetailsView,
         meta: { pageCategory: 'Pokemon'}
       },
     ]

@@ -3,6 +3,6 @@ import apiClient from '@/api/client';
 const baseUrl = URLS.VUE_APP_FAKE_STORE_API;
 export default {
     async getProducts() {
-        return await apiClient.get(`${baseUrl}`)
+        return apiClient.response(await apiClient.get(`${baseUrl}`));
     }
 }

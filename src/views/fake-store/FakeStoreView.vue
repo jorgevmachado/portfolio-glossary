@@ -1,15 +1,15 @@
 <template>
-  <section class="fake-store">
-    <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 products">
-      <div class="rounded overflow-hidden shadow-lg product" v-for="(product, index) in products" :key="index" :class="{inBag: isInBag(product)}">
-        <div class="product-image" :style="{ backgroundImage: `url(${product.image})` }"></div>
+  <section class="fake-store" v-if="!loading">
+    <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 cards">
+      <div class="rounded overflow-hidden shadow-lg card" v-for="(item, index) in products" :key="index" :class="{inBag: isInBag(item)}">
+        <div class="card-image" :style="{ backgroundImage: `url(${item.image})` }"></div>
         <div class="px-6 py-4 text-center">
-          <div class="font-bold">{{product.title}}</div>
+          <div class="font-bold">{{item.title}}</div>
           <p class="text-gray-700 text-base mb-2">
-            US$ {{product.price.toFixed(2)}}
+            US$ {{item.price.toFixed(2)}}
           </p>
-          <button v-if="!isInBag(product)" @click="addToBag(product)">Adicionar ao carrinho</button>
-          <button v-else class="remove" @click="removeFromBag(product)">Remove from Bag</button>
+          <button v-if="!isInBag(item)" @click="addToBag(item)">Adicionar ao carrinho</button>
+          <button v-else class="remove" @click="removeFromBag(item)">Remove from Bag</button>
         </div>
       </div>
     </div>
@@ -26,7 +26,8 @@ export default {
     this.loadProducts();
   },
   computed: {
-    ...mapState('fakeStore', ['products', 'productsInBag'])
+    ...mapState('fakeStore', ['products', 'productsInBag']),
+    ...mapState(['loading'])
   },
   methods: {
     ...mapActions({
@@ -43,11 +44,11 @@ export default {
 
 <style lang="scss">
 .fake-store {
-  .products {
+  .cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    .product {
+    .card {
       flex: 0 0 30%;
       box-sizing: border-box;
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -61,7 +62,7 @@ export default {
       &.inBag {
         border: 1px solid #007bff;
       }
-      .product-image {
+      .card-image {
         margin: 20px auto;
         width: 160px;
         height: 140px;
