@@ -1,7 +1,7 @@
 <template>
   <section class="pokemon" v-if="!loading">
-    <pokemon-search class="mt-8 mb-5 justify-center"/>
     <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 cards" v-if="pokemons.length">
+      <pokemon-search class="mt-8 mb-5 justify-center"/>
       <card-glossary
           v-for="(item, index) in pokemons"
           :key="index"
