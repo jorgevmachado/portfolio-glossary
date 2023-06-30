@@ -26,10 +26,10 @@
 
 <script>
 import {mapActions, mapGetters} from 'vuex';
-import PokemonTypes from '@/components/pokemon/PokemonTypes.vue';
-import PokemonInfo from '@/components/pokemon/PokemonInfo.vue';
-import PokemonStats from '@/components/pokemon/PokemonStats.vue';
-import PokemonEvolution from '@/components/pokemon/PokemonEvolution.vue';
+import PokemonTypes from '@/components/pokemon/details/PokemonTypes.vue';
+import PokemonInfo from '@/components/pokemon/details/PokemonInfo.vue';
+import PokemonStats from '@/components/pokemon/details/PokemonStats.vue';
+import PokemonEvolution from '@/components/pokemon/details/PokemonEvolution.vue';
 
 export default {
   name: 'PokemonDetailsView',

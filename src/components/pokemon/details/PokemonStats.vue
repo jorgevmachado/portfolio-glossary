@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../assets/styles/colors';
+@import '../../../assets/styles/colors';
 .pokemon-stats {
   &__title {
     color: $pokemon-secondary;

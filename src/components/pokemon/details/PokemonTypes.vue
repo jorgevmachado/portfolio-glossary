@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../assets/styles/colors';
+@import '../../../assets/styles/colors';
 .pokemon-types {
   &__title {
     color: $pokemon-secondary;

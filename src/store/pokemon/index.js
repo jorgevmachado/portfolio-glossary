@@ -1,5 +1,6 @@
 import pokemon from '@/api/pokemon';
 import localStorage from '@/lib/storage/local-storage';
+import validation from '@/utils/validations';
 export default {
     namespaced: true,
         state: {
@@ -42,6 +43,10 @@ export default {
             state.pokedex = state.pokedex.filter((item) => item.name !== name)
             localStorage.setPokeDex(state.pokedex)
         },
+        clearPokemons(state) {
+            state.pokemons = [];
+            localStorage.setPokemons(state.pokemons);
+        }
     },
     actions: {
         async fetchPokemons({commit, dispatch}, page = 1) {
@@ -49,6 +54,21 @@ export default {
             const response = await pokemon.getPokemons(page);
             const { results = [] } = response;
             await dispatch('fetchPokemonsDetails', results);
+            commit('setLoading', false, {root: true});
+        },
+        async fetchPokemonByName({commit, dispatch}, name ) {
+            commit('setLoading', true, {root: true});
+            commit('clearPokemons');
+            const pokemons = [];
+            try {
+                const result = await pokemon.getPokemonByName(name);
+                if (!validation.isEmptyObject(result)) {
+                    pokemons.push(result);
+                }
+            } catch (error) {
+                console.error('error => ', error)
+            }
+            await dispatch('fetchPokemonsDetails', pokemons);
             commit('setLoading', false, {root: true});
         },
         async fetchPokemonsDetails({commit}, pokemons) {
