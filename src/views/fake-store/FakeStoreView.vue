@@ -1,17 +1,19 @@
 <template>
   <section class="fake-store" v-if="!loading">
-    <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 cards">
-      <div class="rounded overflow-hidden shadow-lg card" v-for="(item, index) in products" :key="index" :class="{inBag: isInBag(item)}">
-        <div class="card-image" :style="{ backgroundImage: `url(${item.image})` }"></div>
-        <div class="px-6 py-4 text-center">
-          <div class="font-bold">{{item.title}}</div>
-          <p class="text-gray-700 text-base mb-2">
-            US$ {{item.price.toFixed(2)}}
-          </p>
-          <button v-if="!isInBag(item)" @click="addToBag(item)">Adicionar ao carrinho</button>
-          <button v-else class="remove" @click="removeFromBag(item)">Remove from Bag</button>
-        </div>
-      </div>
+    <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 cards" v-if="products.length">
+      <card-glossary
+          v-for="(item, index) in products"
+          :key="index"
+          :isInBag="haveOnBag(item)"
+          :item="item"
+          @add="addToBag"
+          @remove="removeFromBag"
+          image-center
+          allow-remove-from-bag>
+      </card-glossary>
+    </div>
+    <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 cards" v-else>
+      <span class="font-bold text-lg flex justify-center mb-5 text-black">not product find</span>
     </div>
   </section>
 </template>
@@ -19,9 +21,11 @@
 <script>
 
 import {mapActions, mapState} from 'vuex';
+import CardGlossary from '@/components/shared/card/CardGlossary.vue';
 
 export default {
   name: 'FakeStoreView',
+  components: {CardGlossary},
   created() {
     this.loadProducts();
   },
@@ -35,9 +39,9 @@ export default {
       addToBag: 'fakeStore/addToBag',
       removeFromBag: 'fakeStore/removeFromBag',
     }),
-    isInBag(product){
-      return this.productsInBag.find(item => item.id === product.id)
-    }
+    haveOnBag(product) {
+      return !!this.productsInBag.find(item => item.id === product.id);
+    },
   },
 }
 </script>
@@ -52,7 +56,7 @@ export default {
       flex: 0 0 30%;
       box-sizing: border-box;
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-      height: 360px;
+      height: 440px;
       @media only screen and (max-width: 769px) {
         flex: 0 0 40%;
       }

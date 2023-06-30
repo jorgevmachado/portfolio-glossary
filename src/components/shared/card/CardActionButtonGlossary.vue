@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'PokemonCardActionButton',
+  name: 'CardActionsButtonGlossary',
   data() {
     return {};
   },
@@ -38,21 +38,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$custom-primary: #df1818;
-$custom-secondary: #68a198;
 .action-button {
   background: #fff;
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  color: $custom-secondary;
   position: absolute;
   top: -15px;
   left: -15px;
   transition: all 0.2s;
   border: none;
   &:not(.read-only):hover {
-    background: $custom-secondary;
     color: #fff;
   }
   &.read-only {

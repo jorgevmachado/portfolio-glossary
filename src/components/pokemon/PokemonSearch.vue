@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .pokemon-search {
   flex-direction: column;
   width: 100%;

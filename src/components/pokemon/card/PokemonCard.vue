@@ -35,7 +35,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 $custom-primary: #df1818;
 $custom-secondary: #68a198;
 .card {
