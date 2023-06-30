@@ -22,6 +22,9 @@ import {
     faRobot,
     faTrash,
     faSearch,
+    faShoppingCart,
+    faUser,
+    faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 library.add(
     faCoffee,
@@ -39,7 +42,10 @@ library.add(
     faClose,
     faRobot,
     faTrash,
-    faSearch
+    faSearch,
+    faShoppingCart,
+    faUser,
+    faHeart,
 );
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(store).use(router).mount('#app')
