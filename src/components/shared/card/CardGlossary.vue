@@ -10,7 +10,7 @@
           @remove="remove"
       />
       <div class="card__container-header">
-        <span class="font-bold text-lg flex justify-center mb-5 text-black" v-if="obj.name">{{obj.name}}</span>
+        <span class="font-bold text-lg flex justify-center mb-5" :style="{color: fontColor}" v-if="obj.name">{{obj.name}}</span>
         <div class="relative h-100 card__container-header__image" v-if="obj.image">
           <div v-if="imageCenter" class="flex justify-center">
             <img class="card__container-header__image-center " :src="obj.image" alt="">
@@ -20,6 +20,7 @@
       </div>
       <div class="card__container-body mt-5 mb-5">
         <span class="font-bold text-lg flex justify-center mb-5 text-black" v-if="obj.price > 0">US$ {{obj.price.toFixed(2)}}</span>
+        <slot></slot>
       </div>
     </div>
   </div>
@@ -60,6 +61,16 @@ export default {
         name: title === '' ? name : title,
         image,
         price,
+      }
+    },
+    fontColor() {
+      switch (this.backgroundColor) {
+        case '#fff':
+          return '#000';
+        case '#000':
+          return '#ffff00';
+        default:
+          return '#000';
       }
     }
   },

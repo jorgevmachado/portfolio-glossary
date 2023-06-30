@@ -6,6 +6,8 @@ export default {
         state: {
         pokemons: [],
         pokedex: [],
+        total: 0,
+        currentPage: 0,
     },
     getters: {
         haveOnPokedex: (state) => (name) => {
@@ -35,6 +37,12 @@ export default {
             state.pokemons = pokemons;
             localStorage.setPokemons(state.pokemons);
         },
+        setTotalPokemons(state, total) {
+          state.total = total;
+        },
+        setCurrentPage(state, page) {
+          state.currentPage = page;
+        },
         addToPokedex(state, pokemon) {
             state.pokedex.push(pokemon);
             localStorage.setPokeDex(state.pokedex)
@@ -51,8 +59,11 @@ export default {
     actions: {
         async fetchPokemons({commit, dispatch}, page = 1) {
             commit('setLoading', true, {root: true});
+            commit('clearPokemons');
             const response = await pokemon.getPokemons(page);
-            const { results = [] } = response;
+            const { results = [], count = 0 } = response;
+            commit('setCurrentPage', page || 1);
+            commit('setTotalPokemons', count);
             await dispatch('fetchPokemonsDetails', results);
             commit('setLoading', false, {root: true});
         },

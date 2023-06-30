@@ -25,4 +25,16 @@ export default {
     getPokeDex() {
         return this.get(LOCAL_STORAGE.POKEDEX) || [];
     },
+    setStarWarsFilms(films = []) {
+        return this.set(LOCAL_STORAGE.STAR_WARS.FILMS, films);
+    },
+    getStarWarsFilms() {
+        return this.get(LOCAL_STORAGE.STAR_WARS.FILMS) || [];
+    },
+    setStarWarsCharacters(characters = []) {
+        return this.set(LOCAL_STORAGE.STAR_WARS.CHARACTERS, characters);
+    },
+    getStarWarsCharacters() {
+        return this.get(LOCAL_STORAGE.STAR_WARS.CHARACTERS) || [];
+    },
 }
