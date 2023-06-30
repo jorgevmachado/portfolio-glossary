@@ -1,6 +1,6 @@
 <template>
-  <button :class="classList" class="btn" :title="tooltip">
-    <font-awesome-icon :icon="icon" />
+  <button :class="classList" class="btn" :title="tooltip" :style="{color: color}">
+    <font-awesome-icon :icon="icon" class="icon" />
   </button>
 </template>
 
@@ -23,14 +23,22 @@ export default {
       type: String,
       required: true,
     },
+    color: {
+      type: String,
+      default: '#fff',
+    }
   },
   computed: {
     classList() {
+      const hasGreen = this.color === '#68a198';
+      const hasWhite = !hasGreen;
       return {
         shadow: true,
         'read-only': this.readOnly,
         'flex-center': true,
         'action-button': true,
+        'action-button__green': hasGreen,
+        'action-button__white': hasWhite,
       };
     },
   }
@@ -48,11 +56,22 @@ export default {
   left: -15px;
   transition: all 0.2s;
   border: none;
+  &.read-only {
+    cursor: default;
+  }
+}
+.action-button__white {
   &:not(.read-only):hover {
     color: #fff;
   }
-  &.read-only {
-    cursor: default;
+}
+.action-button__green {
+  &:not(.read-only):hover {
+    background: #68a198;
+    color: #fff;
+    .icon {
+      color: #fff;
+    }
   }
 }
 </style>

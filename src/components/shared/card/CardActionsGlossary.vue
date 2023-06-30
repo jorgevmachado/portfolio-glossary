@@ -4,11 +4,13 @@
       <card-actions-button-glossary
           v-if="allowRemoveFromBag"
           @click="remove(item)"
+          :color="color"
           tooltip="Remove Pokemon from My Pokedex"
           icon="trash"
       />
       <card-actions-button-glossary
           v-else
+          :color="color"
           tooltip="Pokemon is in your Pokedex"
           icon="check"
           :read-only="true"
@@ -16,6 +18,7 @@
     </div>
     <card-actions-button-glossary
         v-else
+        :color="color"
         @click="add(item)"
         tooltip="Add Pokemon to My Pokedex"
         icon="plus"
@@ -42,6 +45,10 @@ export default {
     isInBag: {
       type: Boolean,
       default: false,
+    },
+    color: {
+      type: String,
+      default: '#fff',
     }
   },
   methods: {

@@ -1,5 +1,6 @@
 <template>
   <section class="fake-store" v-if="!loading">
+    <h1 class="justify-center text-center mt-10 mb-5 text-lg">My FakeStore</h1>
     <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 cards" v-if="products.length">
       <card-glossary
           v-for="(item, index) in products"

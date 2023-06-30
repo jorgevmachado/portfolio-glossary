@@ -1,10 +1,11 @@
 <template>
-  <div class="card relative m-5">
+  <div class="card relative m-5" :style="{'background-color': backgroundColor}">
     <div class="card__container">
       <card-actions-glossary
           :item="item"
           :allow-remove-from-bag="allowRemoveFromBag"
           :is-in-bag="isInBag"
+          :color="backgroundColor"
           @add="add"
           @remove="remove"
       />
@@ -46,6 +47,10 @@ export default {
     isInBag: {
       type: Boolean,
       default: false,
+    },
+    backgroundColor: {
+      type: String,
+      default: '#fff',
     }
   },
   computed: {
