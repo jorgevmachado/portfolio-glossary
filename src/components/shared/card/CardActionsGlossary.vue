@@ -5,24 +5,34 @@
           v-if="allowRemoveFromBag"
           @click="remove(item)"
           :color="color"
-          tooltip="Remove Pokemon from My Pokedex"
+          tooltip="Remove item from bag"
           icon="trash"
       />
       <card-actions-button-glossary
           v-else
           :color="color"
-          tooltip="Pokemon is in your Pokedex"
+          tooltip="item is in your bag"
           icon="check"
           :read-only="true"
       />
     </div>
-    <card-actions-button-glossary
-        v-else
-        :color="color"
-        @click="add(item)"
-        tooltip="Add Pokemon to My Pokedex"
-        icon="plus"
-    />
+    <div v-else>
+      <card-actions-button-glossary
+          v-if="noAction"
+          :color="color"
+          tooltip="no action for your item"
+          :icon="customIcon"
+          :read-only="true"
+      />
+      <card-actions-button-glossary
+          v-else
+          :color="color"
+          @click="add(item)"
+          tooltip="Add item to you bag"
+          icon="plus"
+      />
+    </div>
+
 
   </section>
 </template>
@@ -49,6 +59,14 @@ export default {
     color: {
       type: String,
       default: '#fff',
+    },
+    noAction: {
+      type: Boolean,
+      default: false,
+    },
+    customIcon: {
+      type: String,
+      default: 'check',
     }
   },
   methods: {

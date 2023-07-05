@@ -8,6 +8,8 @@
           :color="backgroundColor"
           @add="add"
           @remove="remove"
+          :no-action="noAction"
+          :custom-icon="customIcon"
       />
       <div class="card__container-header">
         <span class="font-bold text-lg flex justify-center mb-5" :style="{color: fontColor}" v-if="obj.name">{{obj.name}}</span>
@@ -44,6 +46,14 @@ export default {
     allowRemoveFromBag: {
       type: Boolean,
       default: false,
+    },
+    noAction: {
+      type: Boolean,
+      default: false,
+    },
+    customIcon: {
+      type: String,
+      default: 'check',
     },
     isInBag: {
       type: Boolean,

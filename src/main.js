@@ -25,6 +25,7 @@ import {
     faShoppingCart,
     faUser,
     faHeart,
+    faJedi,
 } from "@fortawesome/free-solid-svg-icons";
 library.add(
     faCoffee,
@@ -46,6 +47,7 @@ library.add(
     faShoppingCart,
     faUser,
     faHeart,
+    faJedi,
 );
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).use(store).use(router).mount('#app')
